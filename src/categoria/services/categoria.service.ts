@@ -22,9 +22,6 @@ export class CategoriaService {
     async findById (id: number): Promise<Categoria> {
        const categoria = await this.categoriaRepository.findOne({
             where: { id },
-            // relations: {
-            //     - : true
-            // }
         })         //select * from tb_categorias where id = ? 
         if (!categoria) 
             throw new HttpException(`Categoria com id ${id} não encontrada`, HttpStatus.NOT_FOUND); //lançar um erro caso a categoria nao seja encontrada
@@ -38,9 +35,6 @@ export class CategoriaService {
             where: {
                 nome: ILike(`%${nome}%`) //select * from tb_categoria where nome like '%nome%'
             },
-            // relations: {
-            //    - : true
-            // }
         })
     }
 
